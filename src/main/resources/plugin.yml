@@ -1,0 +1,11 @@
+name: AxElevator
+description: $description
+prefix: AxElevator
+version: '${version}'
+
+main: de.jaunikapauni.axElevator.AxElevator
+api-version: '26.1.2'
+load: POSTWORLD
+
+authors: [ JauniKapauni ]
+website: https://github.com/JauniKapauni
