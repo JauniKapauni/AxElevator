@@ -1,6 +1,7 @@
 package de.jaunikapauni.axElevator.listener;
 
 import de.jaunikapauni.axElevator.AxElevator;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,6 +28,7 @@ public class ElevatorListener implements Listener {
                 reference.getElevatorManager().teleport(p, reference.getElevatorManager().getDistance() - 1);
             }
         }
+        p.sendActionBar(ChatColor.GREEN + "Up!");
     }
 
     @EventHandler
@@ -39,5 +41,6 @@ public class ElevatorListener implements Listener {
             return;
         }
         reference.getElevatorManager().teleport(p, -reference.getElevatorManager().getDistance());
+        p.sendActionBar(ChatColor.GREEN + "Down!");
     }
 }
