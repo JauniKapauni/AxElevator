@@ -16,6 +16,13 @@ public final class AxElevator extends JavaPlugin {
         saveDefaultConfig();
         elevatorManager = new ElevatorManager(this);
         getServer().getPluginManager().registerEvents(new ElevatorListener(this), this);
+        getLogger().info("");
+        getLogger().info("----------------------------------------");
+        getLogger().info("Name: " + getName());
+        getLogger().info("Version: " + getDescription().getVersion());
+        getLogger().info(String.join("Authors: " + ", ", getDescription().getAuthors()));
+        getLogger().info("----------------------------------------");
+        getLogger().info("");
     }
 
     @Override
