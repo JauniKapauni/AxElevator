@@ -1,6 +1,9 @@
 # AxElevator
 >Minecraft plugin to create elevators
 ---
+## Requirements
+- Minecraft Paper 26.1.2 Server
+---
 ## Features
 - Build elevator
 ---
