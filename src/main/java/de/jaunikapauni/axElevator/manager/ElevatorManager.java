@@ -26,22 +26,34 @@ public class ElevatorManager {
         return loc.getBlock().getType() == getElevatorBlock();
     }
 
-    public void teleport(Player p, int yOffset){
-        Location loc = p.getLocation().clone().add(0, yOffset, 0);
+    public int getNextElevatorAbove(Player p){
+        Location elevatorBlock = p.getLocation().clone().subtract(0, 1, 0);
+        for(int i = 1; i <= getDistance(); i++){
+            Location check = elevatorBlock.clone().add(0, i, 0);
+            if(check.getBlock().getType() == getElevatorBlock()){
+                return (int) check.getY();
+            }
+        }
+        return -1;
+    }
+
+    public int getNextElevatorBelow(Player p){
+        Location elevatorBlock = p.getLocation().clone().subtract(0, 1, 0);
+        for(int i = 1; i <= getDistance(); i++){
+            Location check = elevatorBlock.clone().subtract(0, i, 0);
+            if(check.getBlock().getType() == getElevatorBlock()){
+                return (int) check.getY();
+            }
+        }
+        return -1;
+    }
+
+    public void teleport(Player p, int y){
+        Location loc = p.getLocation().clone();
+        loc.setY(y + 1);
         while(!loc.getBlock().isPassable() && loc.getY() < p.getWorld().getMaxHeight()){
             loc.add(0, 1, 0);
         }
         p.teleport(loc);
-    }
-
-    public boolean isAboveElevatorBlock(Player p){
-        for(int i = 0; i < getDistance(); i++){
-            Location loc = p.getLocation().clone().add(0, i, 0);
-            Material mat = loc.getBlock().getType();
-            if(mat == getElevatorBlock()){
-                return true;
-            }
-        }
-        return false;
     }
 }

@@ -22,8 +22,8 @@ public class ElevatorListener implements Listener {
             double deltaY = e.getTo().getY() - e.getFrom().getY();
             double threshold = 0.3;
             if(deltaY > threshold){
-                if(reference.getElevatorManager().isAboveElevatorBlock(p)){
-                    reference.getElevatorManager().teleport(p, reference.getElevatorManager().getDistance() - 1);
+                if(reference.getElevatorManager().getNextElevatorAbove(p) != -1){
+                    reference.getElevatorManager().teleport(p, reference.getElevatorManager().getNextElevatorAbove(p));
                     p.sendActionBar(ChatColor.GREEN + "Up!");
                 }
             }
@@ -32,13 +32,15 @@ public class ElevatorListener implements Listener {
 
     @EventHandler
     public void onSneak(PlayerToggleSneakEvent e){
-        if(e.isSneaking()){
+        if(!e.isSneaking()){
             return;
         }
         Player p = e.getPlayer();
         if(reference.getElevatorManager().isOnElevatorBlock(p)){
-            reference.getElevatorManager().teleport(p, -reference.getElevatorManager().getDistance());
-            p.sendActionBar(ChatColor.GREEN + "Down!");
+            if(reference.getElevatorManager().getNextElevatorBelow(p) != -1){
+                reference.getElevatorManager().teleport(p, reference.getElevatorManager().getNextElevatorBelow(p));
+                p.sendActionBar(ChatColor.GREEN + "Down!");
+            }
         }
     }
 }
