@@ -48,12 +48,13 @@ public class ElevatorManager {
         return -1;
     }
 
-    public void teleport(Player p, int y){
+    public boolean teleport(Player p, int y){
         Location loc = p.getLocation().clone();
         loc.setY(y + 1);
         if(!loc.getBlock().isPassable() || !loc.clone().add(0, 1, 0).getBlock().isPassable()){
-            return;
+            return false;
         }
         p.teleport(loc);
+        return true;
     }
 }
