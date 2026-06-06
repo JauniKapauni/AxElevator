@@ -23,7 +23,7 @@ public class ElevatorManager {
 
     public boolean isOnElevatorBlock(Player p){
         Location loc = p.getLocation().clone().subtract(0, 1, 0);
-        return loc.getBlock().getType() != getElevatorBlock();
+        return loc.getBlock().getType() == getElevatorBlock();
     }
 
     public void teleport(Player p, int yOffset){

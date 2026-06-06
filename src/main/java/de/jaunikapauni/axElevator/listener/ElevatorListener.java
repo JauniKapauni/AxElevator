@@ -19,14 +19,13 @@ public class ElevatorListener implements Listener {
     public void onMove(PlayerMoveEvent e){
         Player p = e.getPlayer();
         if(reference.getElevatorManager().isOnElevatorBlock(p)){
-            return;
-        }
-        double deltaY = e.getTo().getY() - e.getFrom().getY();
-        double threshold = 0.3;
-        if(deltaY > threshold){
-            if(reference.getElevatorManager().isAboveElevatorBlock(p)){
-                reference.getElevatorManager().teleport(p, reference.getElevatorManager().getDistance() - 1);
-                p.sendActionBar(ChatColor.GREEN + "Up!");
+            double deltaY = e.getTo().getY() - e.getFrom().getY();
+            double threshold = 0.3;
+            if(deltaY > threshold){
+                if(reference.getElevatorManager().isAboveElevatorBlock(p)){
+                    reference.getElevatorManager().teleport(p, reference.getElevatorManager().getDistance() - 1);
+                    p.sendActionBar(ChatColor.GREEN + "Up!");
+                }
             }
         }
     }
@@ -38,9 +37,8 @@ public class ElevatorListener implements Listener {
         }
         Player p = e.getPlayer();
         if(reference.getElevatorManager().isOnElevatorBlock(p)){
-            return;
+            reference.getElevatorManager().teleport(p, -reference.getElevatorManager().getDistance());
+            p.sendActionBar(ChatColor.GREEN + "Down!");
         }
-        reference.getElevatorManager().teleport(p, -reference.getElevatorManager().getDistance());
-        p.sendActionBar(ChatColor.GREEN + "Down!");
     }
 }
