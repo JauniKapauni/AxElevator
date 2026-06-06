@@ -26,9 +26,9 @@ public class ElevatorListener implements Listener {
         if(deltaY > threshold){
             if(reference.getElevatorManager().isAboveElevatorBlock(p)){
                 reference.getElevatorManager().teleport(p, reference.getElevatorManager().getDistance() - 1);
+                p.sendActionBar(ChatColor.GREEN + "Up!");
             }
         }
-        p.sendActionBar(ChatColor.GREEN + "Up!");
     }
 
     @EventHandler
