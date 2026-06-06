@@ -24,7 +24,7 @@ public class ElevatorListener implements Listener {
         double threshold = 0.3;
         if(deltaY > threshold){
             if(reference.getElevatorManager().isAboveElevatorBlock(p)){
-                reference.getElevatorManager().teleport(p, reference.getElevatorManager().getDistance());
+                reference.getElevatorManager().teleport(p, reference.getElevatorManager().getDistance() - 1);
             }
         }
     }
