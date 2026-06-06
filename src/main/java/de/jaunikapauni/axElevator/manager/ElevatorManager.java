@@ -51,8 +51,8 @@ public class ElevatorManager {
     public void teleport(Player p, int y){
         Location loc = p.getLocation().clone();
         loc.setY(y + 1);
-        while(!loc.getBlock().isPassable() && loc.getY() < p.getWorld().getMaxHeight()){
-            loc.add(0, 1, 0);
+        if(!loc.getBlock().isPassable() || !loc.clone().add(0, 1, 0).getBlock().isPassable()){
+            return;
         }
         p.teleport(loc);
     }
