@@ -21,6 +21,9 @@ elevator:
   block: DIAMOND_BLOCK
   max_distance: 5
 ```
+---
+## Commands & Permissions
+- `Use elevators` - `axelevator.use`
 ## Support
 Discord: [AxForge](https://discord.gg/rYSxV4daS8)
 ## License
