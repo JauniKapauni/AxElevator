@@ -18,6 +18,10 @@ public class ElevatorListener implements Listener {
     @EventHandler
     public void onMove(PlayerMoveEvent e){
         Player p = e.getPlayer();
+        if(!p.hasPermission("axelevator.up")){
+            p.sendMessage("You don't have the permission! [axelevator.up]");
+            return;
+        }
         if(reference.getElevatorManager().isOnElevatorBlock(p)){
             double deltaY = e.getTo().getY() - e.getFrom().getY();
             double threshold = 0.3;
@@ -33,10 +37,14 @@ public class ElevatorListener implements Listener {
 
     @EventHandler
     public void onSneak(PlayerToggleSneakEvent e){
+        Player p = e.getPlayer();
+        if(!p.hasPermission("axelevator.down")){
+            p.sendMessage("You don't have the permission! [axelevator.down]");
+            return;
+        }
         if(!e.isSneaking()){
             return;
         }
-        Player p = e.getPlayer();
         if(reference.getElevatorManager().isOnElevatorBlock(p)){
             if(reference.getElevatorManager().getNextElevatorBelow(p) != -1){
                 if(reference.getElevatorManager().teleport(p, reference.getElevatorManager().getNextElevatorBelow(p))){
