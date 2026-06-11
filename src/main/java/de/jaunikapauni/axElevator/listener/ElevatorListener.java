@@ -18,8 +18,8 @@ public class ElevatorListener implements Listener {
     @EventHandler
     public void onMove(PlayerMoveEvent e){
         Player p = e.getPlayer();
-        if(!p.hasPermission("axelevator.up")){
-            p.sendMessage("You don't have the permission! [axelevator.up]");
+        if(!p.hasPermission("axelevator.use")){
+            p.sendMessage("You don't have the permission! [axelevator.use]");
             return;
         }
         if(reference.getElevatorManager().isOnElevatorBlock(p)){
@@ -38,8 +38,8 @@ public class ElevatorListener implements Listener {
     @EventHandler
     public void onSneak(PlayerToggleSneakEvent e){
         Player p = e.getPlayer();
-        if(!p.hasPermission("axelevator.down")){
-            p.sendMessage("You don't have the permission! [axelevator.down]");
+        if(!p.hasPermission("axelevator.use")){
+            p.sendMessage("You don't have the permission! [axelevator.use]");
             return;
         }
         if(!e.isSneaking()){
