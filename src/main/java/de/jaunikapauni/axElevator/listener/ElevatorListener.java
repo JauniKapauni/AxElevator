@@ -41,11 +41,11 @@ public class ElevatorListener implements Listener {
         if(!e.isSneaking()){
             return;
         }
-        if(!p.hasPermission("axelevator.use")){
-            p.sendMessage("You don't have the permission! [axelevator.use]");
-            return;
-        }
         if(reference.getElevatorManager().isOnElevatorBlock(p)){
+            if(!p.hasPermission("axelevator.use")){
+                p.sendMessage("You don't have the permission! [axelevator.use]");
+                return;
+            }
             if(reference.getElevatorManager().getNextElevatorBelow(p) != -1){
                 if(reference.getElevatorManager().teleport(p, reference.getElevatorManager().getNextElevatorBelow(p))){
                     p.sendActionBar(ChatColor.GREEN + "Down!");
