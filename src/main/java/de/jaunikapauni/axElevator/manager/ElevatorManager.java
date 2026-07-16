@@ -17,8 +17,8 @@ public class ElevatorManager {
     int maxDistance;
 
     public void reload(){
-        elevatorBlock = Material.valueOf(reference.getConfig().getString("elevator.block"));
-        maxDistance = reference.getConfig().getInt("elevator.max_distance");
+        elevatorBlock = Material.valueOf(reference.getConfig().getString("elevator.block", "DIAMOND_BLOCK"));
+        maxDistance = reference.getConfig().getInt("elevator.max_distance", 5);
     }
 
     public Material getElevatorBlock(){
