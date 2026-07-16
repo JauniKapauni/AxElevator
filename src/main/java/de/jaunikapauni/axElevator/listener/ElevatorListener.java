@@ -49,8 +49,9 @@ public class ElevatorListener implements Listener {
             if(!p.hasPermission("axelevator.use")){
                 return;
             }
-            if(reference.getElevatorManager().getNextElevatorBelow(p) != -1){
-                if(reference.getElevatorManager().teleport(p, reference.getElevatorManager().getNextElevatorBelow(p))){
+            int elevator = reference.getElevatorManager().getNextElevatorBelow(p);
+            if(elevator != 1){
+                if(reference.getElevatorManager().teleport(p, elevator)){
                     p.sendActionBar(ChatColor.GREEN + "Down!");
                 }
             }
