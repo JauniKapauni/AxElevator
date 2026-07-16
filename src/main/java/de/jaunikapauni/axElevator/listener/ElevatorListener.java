@@ -17,19 +17,23 @@ public class ElevatorListener implements Listener {
 
     @EventHandler
     public void onMove(PlayerMoveEvent e){
+        if(e.getFrom().getBlockX() == e.getTo().getBlockX() && e.getFrom().getBlockY() == e.getTo().getBlockY() && e.getFrom().getBlockZ() == e.getTo().getBlockZ()){
+            return;
+        }
         Player p = e.getPlayer();
-        if(reference.getElevatorManager().isOnElevatorBlock(p)){
-            if(!p.hasPermission("axelevator.use")){
-                p.sendMessage("You don't have the permission! [axelevator.use]");
-                return;
-            }
-            double deltaY = e.getTo().getY() - e.getFrom().getY();
-            double threshold = 0.3;
-            if(deltaY > threshold){
-                if(reference.getElevatorManager().getNextElevatorAbove(p) != -1){
-                    if(reference.getElevatorManager().teleport(p, reference.getElevatorManager().getNextElevatorAbove(p))){
-                        p.sendActionBar(ChatColor.GREEN + "Up!");
-                    }
+        if(!reference.getElevatorManager().isOnElevatorBlock(p)){
+            return;
+        }
+        if(!p.hasPermission("axelevator.use")){
+            p.sendMessage("You don't have the permission! [axelevator.use]");
+            return;
+        }
+        double deltaY = e.getTo().getY() - e.getFrom().getY();
+        double threshold = 0.3;
+        if(deltaY > threshold){
+            if(reference.getElevatorManager().getNextElevatorAbove(p) != -1){
+                if(reference.getElevatorManager().teleport(p, reference.getElevatorManager().getNextElevatorAbove(p))){
+                    p.sendActionBar(ChatColor.GREEN + "Up!");
                 }
             }
         }
