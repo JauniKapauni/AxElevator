@@ -13,9 +13,11 @@ public class ElevatorManager {
         this.reference = reference;
     }
     Material elevatorBlock;
+    int maxDistance;
 
     public void reload(){
         elevatorBlock = Material.valueOf(reference.getConfig().getString("elevator.block"));
+        maxDistance = reference.getConfig().getInt("elevator.max_distance");
     }
 
     public Material getElevatorBlock(){
@@ -23,7 +25,7 @@ public class ElevatorManager {
     }
 
     public int getDistance(){
-        return reference.getConfig().getInt("elevator.max_distance");
+        return maxDistance;
     }
 
     public boolean isOnElevatorBlock(Player p){
