@@ -25,7 +25,6 @@ public class ElevatorListener implements Listener {
             return;
         }
         if(!p.hasPermission("axelevator.use")){
-            p.sendMessage("You don't have the permission! [axelevator.use]");
             return;
         }
         double deltaY = e.getTo().getY() - e.getFrom().getY();
@@ -47,7 +46,6 @@ public class ElevatorListener implements Listener {
         }
         if(reference.getElevatorManager().isOnElevatorBlock(p)){
             if(!p.hasPermission("axelevator.use")){
-                p.sendMessage("You don't have the permission! [axelevator.use]");
                 return;
             }
             if(reference.getElevatorManager().getNextElevatorBelow(p) != -1){
