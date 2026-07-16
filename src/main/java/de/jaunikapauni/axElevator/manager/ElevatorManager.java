@@ -57,6 +57,8 @@ public class ElevatorManager {
 
     public boolean teleport(Player p, int y){
         Location loc = p.getLocation().clone();
+        loc.setX(loc.getBlockX() + 0.5);
+        loc.setZ(loc.getBlockZ() + 0.5);
         loc.setY(y + 1);
         if(!loc.getBlock().isPassable() || !loc.clone().add(0, 1, 0).getBlock().isPassable()){
             return false;
