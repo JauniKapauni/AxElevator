@@ -35,10 +35,10 @@ public class ElevatorManager {
     }
 
     public int getNextElevatorAbove(Player p){
-        Location elevatorBlock = p.getLocation().clone().subtract(0, 1, 0);
+        Block elevatorBlock = p.getLocation().clone().subtract(0, 1, 0).getBlock();
         for(int i = 1; i <= getDistance(); i++){
-            Location check = elevatorBlock.clone().add(0, i, 0);
-            if(check.getBlock().getType() == getElevatorBlock()){
+            Block check = elevatorBlock.getRelative(0, i, 0);
+            if(check.getType() == elevatorBlock.getType()){
                 return (int) check.getY();
             }
         }
@@ -46,10 +46,10 @@ public class ElevatorManager {
     }
 
     public int getNextElevatorBelow(Player p){
-        Location elevatorBlock = p.getLocation().clone().subtract(0, 1, 0);
+        Block elevatorBlock = p.getLocation().clone().subtract(0, 1, 0).getBlock();
         for(int i = 1; i <= getDistance(); i++){
-            Location check = elevatorBlock.clone().subtract(0, i, 0);
-            if(check.getBlock().getType() == getElevatorBlock()){
+            Block check = elevatorBlock.getRelative(0, i, 0);
+            if(check.getType() == elevatorBlock.getType()){
                 return (int) check.getY();
             }
         }
