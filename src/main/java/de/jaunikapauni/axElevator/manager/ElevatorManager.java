@@ -12,9 +12,14 @@ public class ElevatorManager {
     public ElevatorManager(AxElevator reference){
         this.reference = reference;
     }
+    Material elevatorBlock;
+
+    public void reload(){
+        elevatorBlock = Material.valueOf(reference.getConfig().getString("elevator.block"));
+    }
 
     public Material getElevatorBlock(){
-        return Material.valueOf(reference.getConfig().getString("elevator.block"));
+        return elevatorBlock;
     }
 
     public int getDistance(){
