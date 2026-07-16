@@ -3,6 +3,7 @@ package de.jaunikapauni.axElevator.manager;
 import de.jaunikapauni.axElevator.AxElevator;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
@@ -64,6 +65,7 @@ public class ElevatorManager {
             return false;
         }
         p.teleport(loc);
+        p.playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
         return true;
     }
 }
