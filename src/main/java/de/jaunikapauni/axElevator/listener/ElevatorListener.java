@@ -30,8 +30,9 @@ public class ElevatorListener implements Listener {
         double deltaY = e.getTo().getY() - e.getFrom().getY();
         double threshold = 0.3;
         if(deltaY > threshold){
-            if(reference.getElevatorManager().getNextElevatorAbove(p) != -1){
-                if(reference.getElevatorManager().teleport(p, reference.getElevatorManager().getNextElevatorAbove(p))){
+            int elevator = reference.getElevatorManager().getNextElevatorAbove(p);
+            if(elevator != 1){
+                if(reference.getElevatorManager().teleport(p, elevator)){
                     p.sendActionBar(ChatColor.GREEN + "Up!");
                 }
             }
