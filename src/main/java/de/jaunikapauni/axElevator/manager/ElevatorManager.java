@@ -65,7 +65,7 @@ public class ElevatorManager {
             return false;
         }
         p.teleport(loc);
-        p.playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+        p.playSound(loc, Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
         return true;
     }
 }
