@@ -17,9 +17,6 @@ public class ElevatorListener implements Listener {
 
     @EventHandler
     public void onMove(PlayerMoveEvent e){
-        if(e.getFrom().getBlockX() == e.getTo().getBlockX() && e.getFrom().getBlockY() == e.getTo().getBlockY() && e.getFrom().getBlockZ() == e.getTo().getBlockZ()){
-            return;
-        }
         Player p = e.getPlayer();
         if(!reference.getElevatorManager().isOnElevatorBlock(p)){
             return;
@@ -50,7 +47,7 @@ public class ElevatorListener implements Listener {
                 return;
             }
             int elevator = reference.getElevatorManager().getNextElevatorBelow(p);
-            if(elevator != 1){
+            if(elevator != -1){
                 if(reference.getElevatorManager().teleport(p, elevator)){
                     p.sendActionBar(ChatColor.GREEN + "Down!");
                 }

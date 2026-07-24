@@ -48,7 +48,7 @@ public class ElevatorManager {
     public int getNextElevatorBelow(Player p){
         Block elevatorBlock = p.getLocation().clone().subtract(0, 1, 0).getBlock();
         for(int i = 1; i <= getDistance(); i++){
-            Block check = elevatorBlock.getRelative(0, i, 0);
+            Block check = elevatorBlock.getRelative(0, -i, 0);
             if(check.getType() == elevatorBlock.getType()){
                 return (int) check.getY();
             }
